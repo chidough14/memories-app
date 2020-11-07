@@ -25,17 +25,17 @@ const Form = ({currentId, setCurrentId}) => {
 
         if (currentId) {
             dispatch(updatePost(currentId, postData)) 
-            //console.log('updaye')
         } else {
             dispatch(createPost(postData))
-            //console.log('create')
         }
 
-       
+       clear()
     }
 
     const clear = () => {
+       setCurrentId(null)
 
+       setPostData({   creator: '', title: '', message: '', tags: '', selectedFile: '' })
     }
 
     return (
@@ -56,7 +56,7 @@ const Form = ({currentId, setCurrentId}) => {
                </div>
 
                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-               <Button  variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Submit</Button>
+               <Button  variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
            </form>
         </Paper>
     )
